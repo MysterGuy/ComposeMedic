@@ -1,0 +1,20 @@
+# Minimal diagnostic fixture, not a production deployment guide.
+services:
+  web:
+    image: nginx:1.28
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - site-data:/usr/share/nginx/html
+    depends_on:
+      cache:
+        condition: service_healthy
+  cache:
+    image: redis:7.4
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+volumes:
+  site-data:

@@ -1,0 +1,34 @@
+ComposeMedic 0.1.0 | offline | 3 active services
+
+2 errors, 3 warnings, 0 notes
+
+[ERROR] VOLUME_UNDECLARED | database
+  services.database.volumes[0]
+  A named volume has no top-level declaration.
+  Next: Declare it in the top-level volumes section, including external volumes.
+
+[ERROR] PORT_COLLISION | proxy
+  services.proxy.ports[0]
+  Host port range overlaps an active mapping in service web.
+  Next: Use different published ports or non-overlapping host addresses.
+
+[WARNING] BIND_SOURCE_MISSING | web
+  services.web.volumes[0]
+  The source path does not exist on this machine.
+  Next: Create the intended source or correct the mount. Confirm it on the Docker host.
+
+[WARNING] DEPENDENCY_HEALTH_UNVERIFIED | web
+  services.web.depends_on.database
+  A healthy dependency is required, but no active Compose healthcheck is defined.
+  Next: Define a healthcheck or verify that the dependency image provides one.
+
+[WARNING] IMAGE_UNPINNED | web
+  services.web.image
+  The image uses an implicit or explicit latest tag.
+  Next: Pin a version or digest to make updates and recovery predictable.
+
+Scope:
+  - Offline mode checks one Compose file with basic dotenv literals. It is not a complete Compose validator; use --resolve for canonical merges, advanced .env syntax, include, and extends.
+  - Bind paths are checked on this machine, not a remote Docker host. Missing paths may be intentional when Docker creates directories.
+  - Container status and host port occupancy are not checked. Use --live for current-project container status.
+Read-only: no containers or configuration were changed.

@@ -1,0 +1,28 @@
+name: Report a diagnostic problem
+description: A missed issue, incorrect finding, or scan failure
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Use invented values. Do not paste real .env files, credentials, raw Docker output, or production logs."
+  - type: input
+    id: version
+    attributes:
+      label: ComposeMedic version and operating system
+      placeholder: "0.1.0, Ubuntu 24.04, Python 3.12"
+    validations:
+      required: true
+  - type: textarea
+    id: fixture
+    attributes:
+      label: Minimal sanitized Compose file
+      render: yaml
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Command, expected finding, and actual result
+      description: Include scan mode and active profiles. Remove sensitive identifiers from reports.
+    validations:
+      required: true

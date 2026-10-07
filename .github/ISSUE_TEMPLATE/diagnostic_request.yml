@@ -1,0 +1,18 @@
+name: Suggest a diagnostic
+description: Propose a check for a reproducible Compose problem
+title: "[Rule]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem should the rule identify?
+      description: Describe the symptom and a minimal configuration with invented values.
+    validations:
+      required: true
+  - type: textarea
+    id: false_positives
+    attributes:
+      label: When should this rule stay silent?
+      description: Include legitimate configurations that look similar.
+    validations:
+      required: true

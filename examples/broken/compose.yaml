@@ -1,0 +1,20 @@
+# Deliberately broken. Scan this file; do not deploy it.
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./missing-site:/usr/share/nginx/html:ro
+    depends_on:
+      database:
+        condition: service_healthy
+  proxy:
+    image: caddy:2.10
+    ports:
+      - "8080:80"
+  database:
+    image: postgres:17
+    volumes:
+      - database-data:/var/lib/postgresql/data
+# The database volume declaration and healthcheck are intentionally absent.
