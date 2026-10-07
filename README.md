@@ -131,5 +131,3 @@ These are proposed directions, not implemented features:
 ## License
 
 MIT. See [LICENSE](LICENSE).
-
-Built with AI assistance; behavior is covered by automated tests. Contributions are reviewed against reproducible cases.
